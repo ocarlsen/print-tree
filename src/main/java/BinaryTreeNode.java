@@ -34,18 +34,18 @@ public class BinaryTreeNode {
 
         if (right != null) {
             String newPrefix = prefix + (onLeft ? "│   " : "    ");
-            StringBuilder rightTarget = new StringBuilder();
-            right.print(newPrefix, false, rightTarget);
-            target.append(rightTarget);
+            StringBuilder rightChild = new StringBuilder();
+            right.print(newPrefix, false, rightChild);
+            target.append(rightChild);
         }
 
         target.append(prefix).append(onLeft ? "└── " : "┌── ").append(value).append('\n');
 
         if (left != null) {
             String newPrefix = prefix + (onLeft ? "    " : "│   ");
-            StringBuilder leftTarget = new StringBuilder();
-            left.print(newPrefix, true, leftTarget);
-            target.append(leftTarget);
+            StringBuilder leftChild = new StringBuilder();
+            left.print(newPrefix, true, leftChild);
+            target.append(leftChild);
         }
     }
 }
