@@ -36,14 +36,14 @@ public class TreeNode {
 
         String newPrefix = prefix + (isTail ? "    " : "│   ");
 
-        for (int i = 0; i < children.size() - 1; i++) {
+        for (int i = children.size() - 1; i > 0 ; i--) {
             TreeNode child = children.get(i);
             child.print(newPrefix, false, target);
         }
 
         // Last child.
         if (children.size() > 0) {
-            TreeNode child = children.get(children.size() - 1);
+            TreeNode child = children.get(0);
             child.print(newPrefix, true, target);
         }
     }
