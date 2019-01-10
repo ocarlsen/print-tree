@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sun.tools.javac.code.Kinds.NIL;
-
 /**
  * A simple N-ARY tree node whose {@link #toString() method returns a string like the Unix 'tree' command.
  *
@@ -36,7 +34,7 @@ public class TreeNode {
 
         String newPrefix = prefix + (isTail ? "    " : "│   ");
 
-        for (int i = children.size() - 1; i > 0 ; i--) {
+        for (int i = children.size() - 1; i > 0; i--) {
             TreeNode child = children.get(i);
             child.print(newPrefix, false, target);
         }
