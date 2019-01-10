@@ -25,21 +25,27 @@ public class BinaryTreeNode {
 
     @Override
     public String toString() {
-        return print("", true, new StringBuilder()).toString();
+        StringBuilder target = new StringBuilder();
+        print("", true, target);
+        return target.toString();
     }
 
-    private StringBuilder print(String prefix, boolean onLeft, StringBuilder target) {
+    private void print(String prefix, boolean onLeft, StringBuilder target) {
 
         if (right != null) {
-            target.append(right.print(prefix + (onLeft ? "│   " : "    "), false, new StringBuilder()));
+            String newPrefix = prefix + (onLeft ? "│   " : "    ");
+            StringBuilder rightTarget = new StringBuilder();
+            right.print(newPrefix, false, rightTarget);
+            target.append(rightTarget);
         }
 
         target.append(prefix).append(onLeft ? "└── " : "┌── ").append(value).append('\n');
 
         if (left != null) {
-            target.append(left.print(prefix + (onLeft ? "    " : "│   "), true, new StringBuilder()));
+            String newPrefix = prefix + (onLeft ? "    " : "│   ");
+            StringBuilder leftTarget = new StringBuilder();
+            left.print(newPrefix, true, leftTarget);
+            target.append(leftTarget);
         }
-
-        return target;
     }
 }
